@@ -28,8 +28,8 @@ public class NinjaController {
 
     //Adicionar Ninja
     @PostMapping("/criar")
-    public String criarNinja() {
-        return "ninja criada com sucesso";
+    public NinjaModel criarNinja(@RequestBody NinjaModel ninja) {
+        return ninjaService.criarNinja(ninja);
     }
 
     //Alterar dados dos ninjas
