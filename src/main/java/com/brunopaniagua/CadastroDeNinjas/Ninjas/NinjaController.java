@@ -2,14 +2,22 @@ package com.brunopaniagua.CadastroDeNinjas.Ninjas;
 
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/ninjas")
 public class NinjaController {
 
+    private NinjaService ninjaService;
+
+    public NinjaController(NinjaService ninjaService) {
+        this.ninjaService = ninjaService;
+    }
+
     //Mostrar todos os ninjas
     @GetMapping("/listar")
-    public String todos() {
-        return "todos com sucesso";
+    public List<NinjaModel> listarNinjas() {
+        return ninjaService.listarNinjas();
     }
 
     //Adicionar Ninja
