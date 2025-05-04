@@ -32,6 +32,9 @@ public class NinjaModel {
     @Column(name = "img_url")
     private String imgUrl;
 
+    @Column(name = "rank")
+    private String rank;
+
     //Um ninja pode ter apenas UMA missão
     @ManyToOne
     @JoinColumn(name = "missao_id") // Chave estrangeira
