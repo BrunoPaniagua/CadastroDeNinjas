@@ -19,19 +19,24 @@ public class MissaoController {
         return missaoService.listarMissao();
     }
 
+    @GetMapping("/listar/{id}")
+    public MissaoModel listarMissaoPorId(@PathVariable Long id) {
+        return missaoService.listarMissaoPorId(id);
+    }
+
     @PostMapping("/criar")
-    public String criarMissao() {
-        return "Missao criada com sucesso!";
+    public MissaoModel criarMissao(@RequestBody MissaoModel missao) {
+        return missaoService.criarMissao(missao);
+    }
+
+    @DeleteMapping("/deletar/{id}")
+    public void deletarMissaoPorId(@PathVariable Long id) {
+        missaoService.deletarMissaoPorId(id);
     }
 
     @PutMapping("/alterar")
     public String alterarMissao() {
         return "Missao alterada com sucesso!";
-    }
-
-    @DeleteMapping("/deletar")
-    public String excluirMissao() {
-        return "Missao deletada com sucesso!";
     }
 
 }
