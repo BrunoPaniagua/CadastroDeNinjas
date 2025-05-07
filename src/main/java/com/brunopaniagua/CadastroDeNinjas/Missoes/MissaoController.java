@@ -15,12 +15,12 @@ public class MissaoController {
     }
 
     @GetMapping("/listar")
-    public List<MissaoModel> listarMissao() {
+    public List<MissaoDTO> listarMissao() {
         return missaoService.listarMissao();
     }
 
     @GetMapping("/listar/{id}")
-    public MissaoModel listarMissaoPorId(@PathVariable Long id) {
+    public MissaoDTO listarMissaoPorId(@PathVariable Long id) {
         return missaoService.listarMissaoPorId(id);
     }
 
@@ -34,9 +34,9 @@ public class MissaoController {
         missaoService.deletarMissaoPorId(id);
     }
 
-    @PutMapping("/alterar")
-    public String alterarMissao() {
-        return "Missao alterada com sucesso!";
+    @PutMapping("/alterar/{id}")
+    public MissaoDTO alterarMissao(@PathVariable Long id, @RequestBody MissaoDTO missao) {
+        return missaoService.atualizarMissao(id, missao);
     }
 
 }
