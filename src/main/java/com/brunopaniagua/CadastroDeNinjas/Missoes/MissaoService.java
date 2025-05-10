@@ -30,8 +30,10 @@ public class MissaoService {
         return missao.map(missaoMapper::map).orElse(null);
     }
 
-    public MissaoModel criarMissao(MissaoModel missao){
-        return missaoRepository.save(missao);
+    public MissaoDTO criarMissao(MissaoDTO missao){
+        MissaoModel novaMissao = missaoMapper.map(missao);
+        missaoRepository.save(novaMissao);
+        return missaoMapper.map(novaMissao);
     }
 
     public void deletarMissaoPorId(Long id){
