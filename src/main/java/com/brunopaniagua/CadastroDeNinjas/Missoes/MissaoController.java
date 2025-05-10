@@ -17,7 +17,7 @@ import java.util.List;
 public class MissaoController {
 
     private final NinjaService ninjaService;
-    MissaoService missaoService;
+    private final MissaoService missaoService;
 
     public MissaoController(MissaoService missaoService, NinjaService ninjaService) {
         this.missaoService = missaoService;

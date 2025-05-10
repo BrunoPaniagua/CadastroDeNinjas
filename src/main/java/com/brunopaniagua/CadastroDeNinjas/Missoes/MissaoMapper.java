@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Component
 public class MissaoMapper {
 
-    NinjaMapper ninjaMapper;
+    private final NinjaMapper ninjaMapper;
 
     public MissaoMapper(NinjaMapper ninjaMapper) {
         this.ninjaMapper = ninjaMapper;
