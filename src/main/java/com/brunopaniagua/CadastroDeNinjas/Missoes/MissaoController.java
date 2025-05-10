@@ -64,21 +64,6 @@ public class MissaoController {
                 .body("Missão com id " + id + " não foi encontrada");
     }
 
-    @PostMapping("/criar")
-    @Operation(
-            summary = "Cria uma nova missão",
-            description = "Adiciona uma nova missão no banco de dados"
-    )
-    @ApiResponses(value = {
-            @ApiResponse(responseCode = "201", description = "Missão criada com sucesso"),
-            @ApiResponse(responseCode = "400", description = "Erro ao criar a missão")
-    })
-    public ResponseEntity<String> criarMissao(
-            @Parameter(description = "Dados da nova missão a ser criada") @RequestBody MissaoDTO missao) {
-        return ResponseEntity.status(HttpStatus.CREATED)
-                .body("Missão com id " + missao.getId() + " foi criada com sucesso");
-    }
-
     @DeleteMapping("/deletar/{id}")
     @Operation(
             summary = "Deleta missão por ID",
@@ -122,4 +107,10 @@ public class MissaoController {
                 .body("Missao com id " + id + " não foi encontrada");
     }
 
+    public ResponseEntity<String> criarMissao(
+            @Parameter(description = "Dados da nova missão a ser criada") @RequestBody MissaoDTO missao) {
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Missão com id " + missao.getId() + " foi criada com sucesso");
+    }
 }

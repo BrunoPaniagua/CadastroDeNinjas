@@ -1,5 +1,6 @@
 package com.brunopaniagua.CadastroDeNinjas.Ninjas;
 
+import com.brunopaniagua.CadastroDeNinjas.Missoes.MissaoDTO;
 import com.brunopaniagua.CadastroDeNinjas.Missoes.MissaoModel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -16,6 +17,6 @@ public class NinjaDTO {
     private int idade;
     private String imgUrl;
     private String rank;
-    private MissaoModel missao;
+    private MissaoDTO missao;
 
 }
