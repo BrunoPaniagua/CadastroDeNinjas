@@ -1,9 +1,16 @@
 package com.brunopaniagua.CadastroDeNinjas.Ninjas;
 
+import com.brunopaniagua.CadastroDeNinjas.Missoes.MissaoMapper;
 import org.springframework.stereotype.Component;
 
 @Component
 public class NinjaMapper {
+
+    private final MissaoMapper missaoMapper;
+
+    public NinjaMapper(MissaoMapper missaoMapper) {
+        this.missaoMapper = missaoMapper;
+    }
 
     public NinjaModel map(NinjaDTO ninjaDTO) {
         NinjaModel ninjaModel = new NinjaModel();
@@ -13,7 +20,11 @@ public class NinjaMapper {
         ninjaModel.setIdade(ninjaDTO.getIdade());
         ninjaModel.setImgUrl(ninjaDTO.getImgUrl());
         ninjaModel.setRank(ninjaDTO.getRank());
-        ninjaModel.setMissao(ninjaDTO.getMissao());
+
+        if (ninjaDTO.getMissao() != null) {
+            ninjaModel.setMissao(missaoMapper.map(ninjaDTO.getMissao()));
+        }
+
         return ninjaModel;
     }
 
@@ -25,7 +36,11 @@ public class NinjaMapper {
         ninjaDTO.setIdade(ninjaModel.getIdade());
         ninjaDTO.setImgUrl(ninjaModel.getImgUrl());
         ninjaDTO.setRank(ninjaModel.getRank());
-        ninjaDTO.setMissao(ninjaModel.getMissao());
+
+        if (ninjaModel.getMissao() != null) {
+            ninjaDTO.setMissao(missaoMapper.map(ninjaModel.getMissao()));
+        }
+
         return ninjaDTO;
     }
 
